@@ -17,7 +17,7 @@ fullnameOverride: ""
 persistence:
   type: pvc
   enabled: true
-  # storageClassName: default
+  # storageClassName: azuredisk-standart-zrs
   accessModes:
     - ReadWriteOnce
   size: 1Gi
@@ -69,10 +69,10 @@ ingress:
       paths:
         - path: /
           pathType: ImplementationSpecific
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+  tls:
+   - secretName: azfunc.vplanas.lt
+     hosts:
+       - azfunc.vplanas.lt
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
