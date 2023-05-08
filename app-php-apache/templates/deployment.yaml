@@ -50,6 +50,9 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /usr/local/apache2/htdocs
+            - name: config-volume-apache
+              mountPath: /usr/local/apache2/conf/web.apache.conf
+              subpath: web.apache.conf
         - name: "{{ .Chart.Name }}-apache"
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
@@ -92,3 +95,8 @@ spec:
         {{- else }}
           emptyDir: {}
         {{- end }}
+        - name: config-volume-apache
+          configMap:
+            # Provide the name of the ConfigMap containing the files you want
+            # to add to the container
+            name: "{{ include "app-php-apache.fullname" . }}-apache"
