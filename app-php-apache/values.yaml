@@ -5,10 +5,16 @@
 replicaCount: 1
 
 image:
-  repository: php
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  tag: "8.1.18-apache-bullseye"
+  php:
+    repository: php
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: ""
+  apache:
+    repository: apache
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: ""
 
 imagePullSecrets: []
 nameOverride: ""
@@ -70,9 +76,9 @@ ingress:
         - path: /
           pathType: ImplementationSpecific
   tls:
-   - secretName: azfunc.vplanas.lt
+   - secretName: chart-example.local
      hosts:
-       - azfunc.vplanas.lt
+       - chart-example.local
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
@@ -98,8 +104,3 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
-
-mysql:
-  auth:
-    rootPassword: "!!!changeME!!!"
-    database: "vp_api"

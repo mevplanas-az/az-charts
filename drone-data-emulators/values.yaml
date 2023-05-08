@@ -1,8 +1,15 @@
-app-apache:
+app-php-apache:
   image:
-    repository: vpaksreg.azurecr.io/apache
-    pullPolicy: IfNotPresent
-    tag: "1.0.0-manual-test"
+    php:
+      repository: vpaksreg.azurecr.io/php
+      pullPolicy: IfNotPresent
+      # Overrides the image tag whose default is the chart appVersion.
+      tag: "1.0.1-manual-test"
+    apache:
+      repository: vpaksreg.azurecr.io/apache
+      pullPolicy: IfNotPresent
+      # Overrides the image tag whose default is the chart appVersion.
+      tag: "1.0.1-manual-test"
   ingress:
     enabled: false
     className: ""
@@ -18,11 +25,6 @@ app-apache:
     - secretName: azfunc.vplanas.lt
       hosts:
         - azfunc.vplanas.lt
-app-php:
-  image:
-    repository: vpaksreg.azurecr.io/php
-    pullPolicy: IfNotPresent
-    tag: "1.0.0-manual-test"
   persistence:
     type: pvc
     enabled: true
@@ -36,8 +38,8 @@ mysql:
   auth:
     rootPassword: "!!!changeME!!!"
     database: "vp_api"
-app-phpmyadmin:
-  image:
-    repository: phpmyadmin/phpmyadmin
-    pullPolicy: IfNotPresent
-    tag: ""
+# app-phpmyadmin:
+#   image:
+#     repository: phpmyadmin/phpmyadmin
+#     pullPolicy: IfNotPresent
+#     tag: ""
