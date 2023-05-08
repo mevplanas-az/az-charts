@@ -1,0 +1,9 @@
+dependencies:
+- name: app-php-apache
+  repository: file://../app-php-apache
+  version: 1.0.0
+- name: mysql
+  repository: https://charts.bitnami.com/bitnami
+  version: 9.7.2
+digest: sha256:66ec4819d5541c4d8c1a83f580e3019742ae5bddf88a8aa08e6569af66b8f406
+generated: "2023-05-08T15:25:13.7609815+03:00"
