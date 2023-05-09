@@ -74,7 +74,7 @@ spec:
               mountPath: /usr/local/apache2/htdocs
             - name: config-volume-apache
               mountPath: /usr/local/apache2/conf/web.apache.conf
-              subpath: web.apache.conf
+              subPath: web.apache.conf
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
